@@ -144,6 +144,7 @@ def main():
         # Display the pie slices
         if pie_slices == 0:
             print("You're outta pies buddy")
+            print(f"The word was {secret_word}")
             break
 
 
