@@ -16,16 +16,22 @@ def validate_guess(guess, guessed_letters):
 
 
 def generate_secret_word(difficulty_level):
-    word_list = [
-        "recurse",
-        "apple",
-        "programming",
-        "lists",
-        "python",
-        "games",
-        "sustainable",
-        "croissant",
-    ]
+    match difficulty_level:
+        case "1":
+            print("easy")
+            word_list_filename = "easy-words.txt"
+        case "2":
+            print("normal")
+            word_list_filename = "normal-words.txt"
+        case "3":
+            print("hard")
+            word_list_filename = "hard-words.txt"
+
+    word_list = []
+    with open(word_list_filename, "r") as fh:
+        for line in fh:
+            word_list.append(line.strip())
+
     secret_word = random.sample(word_list, 1)[0].upper()
 
     return secret_word
