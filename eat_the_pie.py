@@ -1,4 +1,5 @@
 import random
+from term_piechart import Pie
 
 
 def validate_guess(guess, guessed_letters):
@@ -39,19 +40,40 @@ def check_guess(secret_word, guess):
 
     return indexes
 
+def display_pie_chart(starting_pie_slices, pie_slices_remaining):
+    # starting_pie_slices 8
+    # pie_slices 3
+    pie_slices = [
+        {"name": "Pie Slices Remaining", "value": pie_slices_remaining, "color": "#CA8606" },
+        {"name": "Eaten", "value": (starting_pie_slices - pie_slices_remaining), "color": "#fffff"},
+    ]
+
+    pie = Pie(
+        pie_slices,
+        radius=5,
+        autocolor_pastel_factor=0.7,
+        legend={"line": 0, "format": "{label} {name:<8} {percent:>5.2f}% [{value}]"},
+    )
+    print(pie.render())
+
 def main():
     print("Welcome to Eat the Pie!")
+    starting_pie_slices = 8
+    pie_slices = 8
+    display_pie_chart(starting_pie_slices, pie_slices)
 
     secret_word = generate_secret_word()
     print(f"Secret word: {secret_word}")
 
     letters = len(secret_word)
-    pie_slices = 8
+ 
 
     display_word = list("_" * letters)
     print(' '.join(display_word))
 
     guessed_letters = []
+    
+
     while True:
         guess = input("Guess a letter: ")
         guess = guess.upper()
@@ -73,6 +95,7 @@ def main():
             # If guess is correct
             for idx in correct_indexes:
                 display_word[idx] = guess
+        display_pie_chart(starting_pie_slices, pie_slices)
         print(' '.join(display_word))
 
 
