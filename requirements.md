@@ -2,8 +2,8 @@
 Eat the Pie game
 
 # Specifications
-* [ ] Basic game logic
-* [ ] Create word list
-* [ ] Allow the player 6 guesses
+* [x] Basic game logic
+* [x] Create word list
+* [x] Printed spaces for number of letters in secret word
 * [ ] CodeSkulptor GUI visual
 * [ ] Terminal visual 

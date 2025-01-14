@@ -39,23 +39,17 @@ def check_guess(secret_word, guess):
 
     return indexes
 
-
-def display_word(secret_word):
-    pass
-
-
 def main():
     print("Welcome to Eat the Pie!")
 
     secret_word = generate_secret_word()
-    print(secret_word)
+    print(f"Secret word: {secret_word}")
 
-    print(len(secret_word))
     letters = len(secret_word)
     pie_slices = 8
 
     display_word = list("_" * letters)
-    print(display_word)
+    print(' '.join(display_word))
 
     guessed_letters = []
     while True:
@@ -65,19 +59,31 @@ def main():
         validate_result = validate_guess(guess, guessed_letters)
         if validate_result[0] is False:
             print(validate_result[1])
-
+        
+        # Add letter to guessed letters
         guessed_letters.append(guess)
 
         correct_indexes = check_guess(secret_word, guess)
 
-        for idx in correct_indexes:
-            display_word[idx] = guess
-        print(f"display_word after modification {display_word}")
+        # If guess is not correct, lose one piece of pie
+        if len(correct_indexes) == 0:
+            pie_slices = pie_slices - 1
+            print(f"There are {pie_slices} pieces of pie remaining.")
+        else:
+            # If guess is correct
+            for idx in correct_indexes:
+                display_word[idx] = guess
+        print(' '.join(display_word))
+
 
         # Next up:
         # Game end conditions
         # * You're outta pies
         # * You guessed the word (no underscores)
+        if display_word == list(secret_word):
+            print("You guessed the word!")
+            break
+
         # Display the pie slices
         if pie_slices == 0:
             print("You're outta pies buddy")
