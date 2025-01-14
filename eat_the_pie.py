@@ -134,6 +134,7 @@ def main():
                 display_word[idx] = guess
         display_pie_chart(starting_pie_slices, pie_slices)
         print(" ".join(display_word))
+        print("Guessed letters: ", " ".join(guessed_letters))
 
         # Next up:
         # Game end conditions
