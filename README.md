@@ -1,8 +1,9 @@
-# eat_the_pie
+# Eat the Pie
 Pairing practice at the Recurse Center.
 
-# How to get started
+Play a non-violent version of hangman in the terminal! Choose your difficulty level, enjoy pie chart visuals, and guess letters until you guess the secret word or run out of pie.
 
+## How to get started
 We use `uv` for package management. You can install it with `brew install uv` if you don't have it already.
 
 Once you have `uv`:
