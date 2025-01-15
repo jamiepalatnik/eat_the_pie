@@ -122,13 +122,19 @@ def main():
         correct_indexes = check_guess(secret_word, guess)
 
         # If guess is not correct, lose one piece of pie
-        if len(correct_indexes) == 0:
+        if len(correct_indexes) == 0 and pie_slices > 2:
             pie_slices = pie_slices - 1
             print(f"There are {pie_slices} pieces of pie remaining.")
+        elif len(correct_indexes) == 0 and pie_slices == 2: 
+            pie_slices = pie_slices - 1
+            print(f"There is {pie_slices} piece of pie remaining.")
+        elif len(correct_indexes) == 0 and pie_slices == 1:
+            pie_slices = pie_slices - 1
         else:
             # If guess is correct
             for idx in correct_indexes:
                 display_word[idx] = guess
+            print(f"There are {pie_slices} pieces of pie remaining.")
         display_pie_chart(starting_pie_slices, pie_slices)
         print(" ".join(display_word))
         print("Guessed letters: ", " ".join(guessed_letters))
